@@ -1,6 +1,11 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { MeasurePoint } from './model/measure.int';
+import {
+  formMeasure,
+  isValidMeasure,
+  MeasurePoint,
+  NullablePartial,
+} from './model/measure.int';
 
 @Injectable({
   providedIn: 'root',
@@ -16,15 +21,24 @@ export class MeasureService {
     const data = this.localStorageService.getItem(this.storageKey);
     if (data) {
       const measures = JSON.parse(data);
-      this.AllMeasure.set(measures);
+      this.AllMeasure.set(
+        measures.map((measure: any) => ({
+          ...measure,
+          date: new Date(measure.date),
+        }))
+      );
     }
   }
 
-  addMeasure(newMeasure: MeasurePoint) {
-    this.AllMeasure.update((measures) => [...measures, newMeasure]);
-    this.localStorageService.setItem(
-      this.storageKey,
-      JSON.stringify(this.AllMeasure())
-    );
+  addMeasure(newMeasure: formMeasure) {
+    if (isValidMeasure(newMeasure)) {
+      this.AllMeasure.update((measures) => [...measures, newMeasure]);
+      this.localStorageService.setItem(
+        this.storageKey,
+        JSON.stringify(this.AllMeasure())
+      );
+    } else {
+      alert('bad mesure');
+    }
   }
 }
