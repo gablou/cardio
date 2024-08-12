@@ -57,5 +57,6 @@ export class NewMeasureFromComponent {
   onSubmit() {
     this.measureService.addMeasure(this.newMeasureFrom.value);
     console.log(this.newMeasureFrom.value);
+    this.newMeasureFrom.reset();
   }
 }

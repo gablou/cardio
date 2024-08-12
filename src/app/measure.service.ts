@@ -31,6 +31,7 @@ export class MeasureService {
   }
 
   addMeasure(newMeasure: formMeasure) {
+    newMeasure.comment = newMeasure.comment || '';
     if (isValidMeasure(newMeasure)) {
       this.AllMeasure.update((measures) => [...measures, newMeasure]);
       this.localStorageService.setItem(
