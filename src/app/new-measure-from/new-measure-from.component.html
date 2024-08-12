@@ -1,0 +1,31 @@
+<form [formGroup]="newMeasureFrom" (ngSubmit)="onSubmit()">
+  <div formGroupName="take1">
+    <h2>prise 1</h2>
+    <label>SYS: <input type="number" formControlName="sys" /></label>
+    <label>DIA: <input type="number" formControlName="dia" /></label>
+    <label>PULSE: <input type="number" formControlName="pulse" /></label>
+  </div>
+  <div formGroupName="take2">
+    <h2>prise 2</h2>
+    <label>SYS: <input type="number" formControlName="sys" /></label>
+    <label>DIA: <input type="number" formControlName="dia" /></label>
+    <label>PULSE: <input type="number" formControlName="pulse" /></label>
+  </div>
+  <div formGroupName="take3">
+    <h2>prise 3</h2>
+    <label>SYS: <input type="number" formControlName="sys" /></label>
+    <label>DIA: <input type="number" formControlName="dia" /></label>
+    <label>PULSE: <input type="number" formControlName="pulse" /></label>
+  </div>
+
+  <label
+    >Commentaire:
+    <input type="text" formControlName="comment" />
+  </label>
+  <label
+    >Date:
+    <!-- <input type="datetime-local" formControlName="date" /> -->
+    <p-calendar formControlName="date" [showTime]="true" [hourFormat]="'24'" />
+  </label>
+  <button type="submit" [disabled]="!newMeasureFrom.valid">Submit</button>
+</form>

@@ -1,0 +1,23 @@
+<p>Mesure</p>
+<ul>
+  @for (measure of measures(); track measure.date) {
+  <li>
+    <div>{{ measure.date }} - {{ measure.comment }}</div>
+    <div>
+      <span>sys: {{ measure.take1?.sys }}</span>
+      <span>dia: {{ measure.take1?.dia }}</span>
+      <span>pulse: {{ measure.take1?.pulse }}</span>
+    </div>
+    <div>
+      <span>sys: {{ measure.take1?.sys }}</span>
+      <span>dia: {{ measure.take1?.dia }}</span>
+      <span>pulse: {{ measure.take1?.pulse }}</span>
+    </div>
+    <div>
+      <span>sys: {{ measure.take1?.sys }}</span>
+      <span>dia: {{ measure.take1?.dia }}</span>
+      <span>pulse: {{ measure.take1?.pulse }}</span>
+    </div>
+  </li>
+  }
+</ul>
